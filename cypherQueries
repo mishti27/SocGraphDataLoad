@@ -1,0 +1,40 @@
+Cypher queries:
+
+Data preparation:
+
+CREATE TEXT INDEX text_index_business_id FOR (n:BUSINESS) ON (n.BUSINESS_ID)
+CREATE TEXT INDEX text_index_user_id FOR (n:USER_REVIEW) ON (n.USER_ID)
+
+Analysis:
+
+match(u1:USER_REVIEW) -[r1]-> (b:BUSINESS)
+where b.BUSINESS_TYPE = 'RESTAURANT'
+and b.BUSINESS_REVIEW_COUNT > 250
+return r1.STARS as stars, COUNT(*) as count 
+order by stars desc
+
+match(u1:USER_REVIEW)-[r1]->(b:BUSINESS)<-[r2]-(u2:USER_REVIEW)
+match p = shortestPath((u1)-[:HAS_FRIEND*..3]-(u2))
+where b.BUSINESS_TYPE = 'RESTAURANT' 
+and b.BUSINESS_REVIEW_COUNT>250 
+and u1.USER_ID<>u2.USER_ID 
+and r1.STARS = 5 	
+return toInteger(length(p)) as hops, r2.STARS as STARS, count(*) as COUNT 
+order by hops, STARS desc
+
+match(u1:USER_REVIEW) -[r1]-> (b:BUSINESS)
+where b.BUSINESS_TYPE = 'HEALTH'
+and b.BUSINESS_REVIEW_COUNT > 10
+return r1.STARS as stars, COUNT(*) as count 
+order by stars desc
+
+match(u1:USER_REVIEW)-[r1]->(b:BUSINESS)<-[r2]-(u2:USER_REVIEW)
+match p = shortestPath((u1)-[:HAS_FRIEND*..3]-(u2))
+where b.BUSINESS_TYPE = 'RESTAURANT' 
+and b.BUSINESS_REVIEW_COUNT>250 
+and u1.USER_ID<>u2.USER_ID 
+and r1.STARS = 5 	
+return toInteger(length(p)) as hops, r2.STARS as STARS, count(*) as COUNT 
+order by hops, STARS desc
+
+
