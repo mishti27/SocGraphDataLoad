@@ -10,3 +10,7 @@ A special thanks to the folks at Yelp for providing these very interesting and c
 - The contents of the dataset are never disclosed.
 - The method and conclusions here are my own and not endorsed by Yelp.
 - All code and artifacts are published under an open-source (MIT) license.
+
+Details and analysis on Medium: 
+https://medium.com/@mishti27/how-can-we-use-a-graph-database-to-measure-the-influence-of-social-networks-part-1-6ea68b05a3ca
+https://medium.com/@mishti27/how-can-we-use-a-graph-database-to-measure-the-influence-of-social-networks-part-2-8404376c8fe7
