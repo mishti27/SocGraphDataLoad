@@ -1,3 +1,11 @@
+# ##################################################################################################################
+# This program inserts the data from the user file into the graph. It creates the users and friend relationships.
+# Set the sub-setting criteria here: business type, State, etc., based on the businesses of interest.
+#
+# Created: Mishti Sarkar, 06/10/24
+# ##################################################################################################################
+
+
 import json
 from neo4j import GraphDatabase
 
